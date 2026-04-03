@@ -1,3 +1,14 @@
+---
+title: Payment Recovery Env
+emoji: 💰
+colorFrom: blue
+colorTo: green
+sdk: docker
+app_file: app.py
+pinned: false
+app_port: 7860
+---
+
 # AI Payment Recovery & Negotiation Environment
 
 This environment simulates real-world invoice recovery negotiation, where AI agents must handle delays, resistance, and disputes through multi-step reasoning and strategic communication.
