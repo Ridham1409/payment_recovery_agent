@@ -23,6 +23,10 @@ class GraderRequest(BaseModel):
     invoice_amount: float
     steps_taken: int
 
+@app.get("/")
+def read_root():
+    return {"message": "Welcome to the AI Payment Recovery & Negotiation Environment API. Check /docs for endpoints. System is Running."}
+
 @app.get("/health")
 def health():
     return {"status": "ok", "environment": "payment-recovery-env"}
