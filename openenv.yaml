@@ -1,0 +1,31 @@
+name: payment-recovery-env
+version: "1.0.0"
+description: >
+  AI environment for training agents to recover overdue
+  invoice payments through professional negotiation.
+author: "Ridham Bhavnagariya"
+tags: ["business", "negotiation", "finance", "recovery"]
+tasks:
+  - id: easy
+    description: "Recover $1000 from cooperative client, 7 days overdue"
+    difficulty: easy
+    max_steps: 5
+  - id: medium
+    description: "Recover $3000 from ghosting client, 30 days overdue"
+    difficulty: medium
+    max_steps: 5
+  - id: hard
+    description: "Negotiate disputed $8000 invoice, 90 days overdue"
+    difficulty: hard
+    max_steps: 5
+action_space: "Natural language message (str)"
+observation_space: >
+  Client profile, invoice details, conversation history,
+  current step, amount recovered, completion status
+endpoints:
+  reset: POST /reset
+  step: POST /step
+  state: GET /state
+  tasks: GET /tasks
+  grader: POST /grader
+  baseline: POST /baseline
