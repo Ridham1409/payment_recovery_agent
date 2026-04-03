@@ -5,13 +5,19 @@ from env.environment import PaymentRecoveryEnv
 from env.models import Action
 from grader.grader import Grader
 
+SYSTEM_PROMPT = (
+    "You are a professional payment recovery specialist working for a digital agency. "
+    "Your goal is to recover overdue invoice payments while maintaining client relationships. "
+    "Be firm but empathetic. Use logic and professionalism. Avoid legal threats unless absolute last resort. "
+    "Reply with ONLY the message you would send to the client — nothing else."
+)
+
 def main():
-    # Initialize OpenAI client using environment variables
     client = OpenAI(
         base_url=os.environ["API_BASE_URL"],
         api_key=os.environ["HF_TOKEN"]
     )
-    model_name = os.environ["payment_recovery_agent"]
+    model_name = os.environ["MODEL_NAME"]
 
     grader = Grader()
     tasks = ["easy", "medium", "hard"]
@@ -48,7 +54,7 @@ def main():
             response = client.chat.completions.create(
                 model=model_name,
                 messages=[
-                    {"role": "system", "content": agent_system_prompt},
+                    {"role": "system", "content": SYSTEM_PROMPT},
                     {"role": "user", "content": prompt}
                 ],
                 temperature=0.7

@@ -59,11 +59,11 @@ def get_tasks():
 @app.post("/reset")
 def reset(req: ResetRequest):
     if req.task_name not in TASKS:
-        raise HTTPException(status_code=404, detail="Task not found")
+        raise HTTPException(status_code=400, detail=f"Unknown task '{req.task_name}'. Valid tasks: easy, medium, hard")
     
     environments[req.task_name] = PaymentRecoveryEnv(req.task_name)
     obs = environments[req.task_name].reset()
-    return obs
+    return {"status": "ok", "task_name": req.task_name, "observation": obs}
 
 @app.post("/step")
 def step(req: StepRequest):
