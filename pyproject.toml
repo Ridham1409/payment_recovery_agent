@@ -12,8 +12,12 @@ dependencies = [
     "pydantic",
     "openai",
     "pyyaml",
-    "python-dotenv"
+    "python-dotenv",
+    "openenv-core>=0.2.0"
 ]
+
+[project.scripts]
+server = "app:app"
 
 [project.urls]
 Homepage = "https://huggingface.co/spaces/Ridham14/payment-recovery-env"
