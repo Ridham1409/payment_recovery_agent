@@ -1,0 +1,23 @@
+[project]
+name = "payment-recovery-env"
+version = "1.0.0"
+description = "AI environment for recovering overdue invoice payments through negotiation"
+authors = [
+    {name = "Ridham Bhavnagariya"}
+]
+requires-python = ">=3.11"
+dependencies = [
+    "fastapi",
+    "uvicorn",
+    "pydantic",
+    "openai",
+    "pyyaml",
+    "python-dotenv"
+]
+
+[project.urls]
+Homepage = "https://huggingface.co/spaces/Ridham14/payment-recovery-env"
+
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.backends.legacy:build"
