@@ -8,15 +8,15 @@ class Grader:
         else:
             recovery_ratio = 0.0
             
-        payment_outcome_score = 0.0
+        payment_outcome_score = 0.01
         if recovery_ratio >= 1.0:
-            payment_outcome_score = 0.5
+            payment_outcome_score = 0.49
         elif recovery_ratio >= 0.5:
             payment_outcome_score = 0.3
         elif recovery_ratio > 0.0:
             payment_outcome_score = 0.1
         else:
-            payment_outcome_score = 0.0
+            payment_outcome_score = 0.01
             
         score += payment_outcome_score
 
@@ -56,7 +56,7 @@ class Grader:
         if task_name == "hard" and amount_recovered > 0:
             score += 0.05
             
-        return max(0.0, min(1.0, score))
+        return max(0.01, min(0.99, score))
 
     def explain_score(self, score: float, payment_outcome: float, tone_score: float, negotiation_score: float) -> str:
         return f"Total Score: {score:.2f} | Payment Outcome: {payment_outcome:.2f}/0.50 | Quality: {negotiation_score:.2f}/0.30 | Tone: {tone_score:.2f}/0.20"

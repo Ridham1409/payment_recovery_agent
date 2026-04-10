@@ -97,6 +97,7 @@ def main():
                     invoice_amount=obs.invoice_amount,
                     steps_taken=obs.current_step
                 )
+                final_score = max(0.01, min(0.99, final_score))
 
                 end_log = {
                     "task": task_name,
